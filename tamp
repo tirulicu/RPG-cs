@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Barra de Progresso Interativa</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #222;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      gap: 20px;
+    }
+
+    .progress-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .icon {
+      width: 40px;
+      height: 40px;
+      background: #0af;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      box-shadow: 0 0 10px #0af;
+    }
+
+    .progress-bar {
+      width: 300px;
+      height: 25px;
+      background: #444;
+      border-radius: 5px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #0f0, #6f6);
+      transition: width 0.3s ease;
+    }
+
+    .progress-text {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .label {
+      margin-left: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 8px 15px;
+      font-size: 14px;
+      margin: 0 5px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .add {
+      background: #0f0;
+      color: #000;
+    }
+
+    .remove {
+      background: #f00;
+      color: #fff;
+    }
+
+    input {
+      padding: 5px 10px;
+      font-size: 14px;
+      width: 80px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="progress-container">
+    <div class="icon">🛡️</div>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress"></div>
+      <div class="progress-text" id="progress-text">0%</div>
+    </div>
+    <div class="label">Defesa</div>
+  </div>
+
+  <div>
+    <button class="remove" onclick="alterarValor(-10)">Diminuir</button>
+    <button class="add" onclick="alterarValor(10)">Adicionar</button>
+  </div>
+
+  <div>
+    <input type="number" id="valor" min="0" max="100" placeholder="0-100">
+    <button onclick="definirValor()">Definir</button>
+  </div>
+
+  <script>
+    let valor = 0;
+    const progressFill = document.getElementById("progress");
+    const progressText = document.getElementById("progress-text");
+
+    function atualizarBarra() {
+      progressFill.style.width = valor + "%";
+      progressText.textContent = valor + "%";
+    }
+
+    function alterarValor(delta) {
+      valor = Math.min(100, Math.max(0, valor + delta));
+      atualizarBarra();
+    }
+
+    function definirValor() {
+      let entrada = document.getElementById("valor").value;
+      valor = Math.min(100, Math.max(0, parseInt(entrada) || 0));
+      atualizarBarra();
+    }
+  </script>
+</body>
+</html>

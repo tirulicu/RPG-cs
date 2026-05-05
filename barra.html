@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Duas Barras de Progresso</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #222;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: ;
+      align-items: ;
+      height: 100vh;
+      gap: 30px;
+      margin-top: 3%;
+    }
+
+    .progress-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .icon {
+      width: 40px;
+      height: 40px;
+      background: #0af;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      box-shadow: 0 0 10px #0af;
+    }
+
+    .progress-bar {
+      width: 300px;
+      height: 25px;
+      background: #444;
+      border-radius: 5px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #0f0, #6f6);
+      transition: width 0.3s ease;
+    }
+
+    .progress-text {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .label {
+      margin-left: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 5px 10px;
+      margin: 5px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .add { background: #0f0; color: #000; }
+    .remove { background: #f00; color: #fff; }
+    .set { background: #06f; color: #fff; }
+  </style>
+</head>
+<body>
+  <!-- Primeira barra -->
+  <div class="progress-container">
+    <div class="icon">🛡️</div>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress1"></div>
+      <div class="progress-text" id="progress-text1">0%</div>
+    </div>
+    <div class="label"></div>
+  </div>
+  <div>
+    <button class="remove" onclick="alterarValor(1,-1)">Diminuir 1</button>
+    <button class="add" onclick="alterarValor(1,1)">aumentar 1</button>
+    <input type="number" id="valor1" min="0" max="100" placeholder="0-100">
+    <button class="add" onclick="adicionarValor(1)">Adicionar</button>
+    <button class="remove" onclick="removerValor(1)">Remover</button>
+  </div>
+
+  <!-- Segunda barra -->
+  <div class="progress-container">
+    <div class="icon">⚔️</div>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress2"></div>
+      <div class="progress-text" id="progress-text2">0%</div>
+    </div>
+    <div class="label"></div>
+  </div>
+  <div>
+    <button class="remove" onclick="alterarValor(2,-1)">Diminuir 1</button>
+    <button class="add" onclick="alterarValor(2,1)">aumentar 1</button>
+    <input type="number" id="valor2" min="0" max="100" placeholder="0-100">
+    <button class="add" onclick="adicionarValor(2)">Adicionar</button>
+    <button class="remove" onclick="removerValor(2)">Remover</button>
+  </div>
+<!--terceira barra-->
+<div class="progress-container">
+  <div class="icon">✊</div>
+  <div class="progress-bar">
+    <div class="progress-fill" id="progress3"></div>
+    <div class="progress-text" id="progress-text3">0%</div>
+  </div>
+  <div class="label"></div>
+</div>
+<div>
+  <button class="remove" onclick="alterarValor(3,-1)">Diminuir 1</button>
+  <button class="add" onclick="alterarValor(3,1)">aumentar 1</button>
+  <input type="number" id="valor3" min="0" max="100" placeholder="0-100">
+  <button class="add" onclick="adicionarValor(3)">Adicionar</button>
+  <button class="remove" onclick="removerValor(3)">Remover</button>
+</div>
+
+
+
+  <script>
+    let valores = {1:0, 2:0, 3:0};  <!--⬅️aqi-->
+<!--⬆️para cria uma barra nova e só coloca aq em cima⬆️-->
+    function atualizarBarra(id) {
+      document.getElementById("progress"+id).style.width = valores[id] + "%";
+      document.getElementById("progress-text"+id).textContent = valores[id] + "%";
+    }
+
+    function alterarValor(id, delta) {
+      valores[id] = Math.min(100, Math.max(0, valores[id] + delta));
+      atualizarBarra(id);
+    }
+
+    function definirValor(id) {
+      let entrada = document.getElementById("valor"+id).value;
+      valores[id] = Math.min(100, Math.max(0, parseInt(entrada) || 0));
+      atualizarBarra(id);
+    }
+
+    function adicionarValor(id) {
+      let entrada = document.getElementById("valor"+id).value;
+      valores[id] = Math.min(100, Math.max(0, valores[id] + (parseInt(entrada) || 0)));
+      atualizarBarra(id);
+    }
+
+    function removerValor(id) {
+      let entrada = document.getElementById("valor"+id).value;
+      valores[id] = Math.min(100, Math.max(0, valores[id] - (parseInt(entrada) || 0)));
+      atualizarBarra(id);
+    }
+  </script>
+</body>
+</html>
