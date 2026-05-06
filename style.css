@@ -1,59 +1,84 @@
-.barra {
+.livro-fundo {
     height: 100%;
-    width: 250px; 
-    position: fixed; 
+    width: 100%;
+    background-image:url();
+}
+
+.quadro1 {
+    height: 50%;
+    width: 50%;
+    position: fixed;
     top: 0;
     left: 0;
     background-color: #000000;
     color: white;
     padding-top: 20px;
 }
-.quadro1{
+
+.quadro2 {
     height: 50%;
-    width: 50%; 
-    position: fixed; 
-    top: 0;
-    left: 0;
-    background-color: #000000;
-    color: white;
-    padding-top: 20px;
-}
-.quadro2{
-    height: 50%;
-    width: 50%; 
-    position: fixed; 
+    width: 50%;
+    position: fixed;
     top: 0;
     left: 50%;
     background-color: #ff0000;
     color: white;
     padding-top: 20px;
 }
-.quadro3{
+
+.quadro3 {
     height: 50%;
-    width: 50%; 
-    position: fixed; 
+    width: 50%;
+    position: fixed;
     top: 50%;
     left: 50%;
     background-color: #00fe6e;
     color: white;
     padding-top: 20px;
 }
-.quadro4{
+
+.quadro4 {
     height: 50%;
-    width: 50%; 
-    position: fixed; 
+    width: 50%;
+    position: fixed;
     top: 50%;
     left: 0%;
     background-color: #1100ff;
     color: white;
     padding-top: 20px;
 }
-img{
-    height: 10%;
+
+
+.logo2 {
+    height: 70%;
     width: 100%;
 }
-.menu_logo{
-    height: 130%;
-    width: 50%;
+
+.home {
+    height: 75%;
+    width: 90%;
 }
 
+.historia {
+    height: 75%;
+    width: 90%;
+}
+
+.persona {
+    height: 75%;
+    width: 90%;
+}
+.mobs{
+        height: 75%;
+        width: 90%;
+}
+
+.ir {
+    height: 75%;
+    width: 90%;
+}
+
+.volta {
+    height: 75%;
+    width: 90%;
+}
